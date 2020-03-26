@@ -1,3 +1,9 @@
+const menu = document.querySelector('.menu-data');
+const table = document.querySelector('.table-data-provinsi');
+
+menu.classList.toggle('loader');
+
+
 getDataIndonesia()
 .then(data => updateUiMenu(data));
 
@@ -8,39 +14,32 @@ getDataProvinsi()
 
 async function getDataIndonesia() {
 	return await fetch('https://api.kawalcorona.com/indonesia/')
-	.then(resp => resp.json())
-	.then(resp => resp);
+	.finally(() => menu.classList.toggle('loader'))
+	.then(resp => {
+		if (!resp.ok) {
+			throw new Error(resp);
+		}
+		return resp.json();
+	})
+	.then(resp => resp)
+	.catch(err => console.log(err));
 }
 
 async function getDataProvinsi() {
 	return await fetch('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi')
-	.then(resp => resp.json())
-	.then(resp => resp);
+	.finally(() => {
+		const loaderTable = document.querySelector('.loader-table');
+		loaderTable.classList.remove('loader');
+	})
+	.then(resp => {
+		if (!resp.ok) {
+			throw new Error(resp);
+		}
+		return resp.json();
+	})
+	.then(resp => resp)
+	.catch(err => console.log(err));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function updateUiMenu(data) {
@@ -92,7 +91,6 @@ function updateUiMenu(data) {
 		</div>`;
 	});
 
-	const menu = document.querySelector('.menu-data');
 	menu.innerHTML = html;
 }
 
@@ -101,13 +99,13 @@ function updateUiTableProvinsi(data) {
 	let html = '';
 	data.forEach((dt,i) => {
 		html += `<tr>
-      <th scope="row">${i + 1}</th>
-      <td>${dt.attributes.Provinsi}</td>
-      <td>${dt.attributes.Kasus_Posi}</td>
-      <td>${dt.attributes.Kasus_Semb}</td>
-      <td>${dt.attributes.Kasus_Meni}</td>
-    </tr>`;
+		<th scope="row">${i + 1}</th>
+		<td>${dt.attributes.Provinsi}</td>
+		<td>${dt.attributes.Kasus_Posi}</td>
+		<td>${dt.attributes.Kasus_Semb}</td>
+		<td>${dt.attributes.Kasus_Meni}</td>
+		</tr>`;
 	});
-	const table = document.querySelector('.table-data-provinsi');
+	
 	table.innerHTML = html;
 }
