@@ -11,22 +11,17 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 
-  <title>Hello World</title>
-  
-  <style>
-    .card {
-      border: 0;
-      border-radius: 0;
-      border-left: 3px solid #f8ff00;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-  </style>
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <title>Pencarian Film</title>
 
 </head>
 <body>
+
 
   <!-- navbar -->
   <nav class="navbar navbar-dark fixed-top">
@@ -46,7 +41,7 @@
             <a class="nav-link scroll-link" href="https://robbiabd.github.io/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link scroll-link" href="https://robbiabd.github.io/article/covid-19.html">Covid 19</a>
+            <a class="nav-link scroll-link" href="https://robbiabd.github.io/article/covid-19.html">Info Covid 19</a>
           </li>
           <li class="nav-item">
             <a class="nav-link scroll-link" href="https://robbiabd.github.io/article/movie.html">Pencarian Film</a>
@@ -58,48 +53,63 @@
   </nav>
   <!-- end navbar -->
 
-  <div class="container mt-5 mb-5">
-    <!-- content -->
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card bg-transparent text-white mx-auto mt-5">
-          <div class="card-body">
-            <h4>Hello,</h4>
-            <h3 class="card-title">
-              I Am Robbi Abdul Rohman
-              <p class="h6"><small>a FullStack Developer</small></p>
-            </h3>       
+ <div class="container mt-5  pt-5">
 
-            <p class="card-text mt-2">
-              <h3>About me</h3>
-              i'am is a fullstack developer from Majalengka, Indonesia. i was create some web application with Codeigniter,Laravel,Bootstrap, etc.  
-            </p>
+    <div class="row mt-5">
 
-            <p class="card-text">
-              PHP,Javascript,JQuery,Bootstrap,Codeigniter,Laravel,MySQL,Java,C#, etc.
-            </p>
-
-            <p class="card-text">
-              <p class="m-0">Email : robbiabd.drawing@gmail.com</p>
-              <p class="m-0">Facebook : Robbi Abdul Rohman</p>
-              <p class="m-0">Whatsapp : +62 821-2656-6475</p>
-
-            </p>
-          </div>
+      <div class="col-md mt-3">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control keyword-search" value="" placeholder="Search Movies...">
+          <div class="input-group-append">
+            <button class="btn btn-success btn-search" type="button">Search</button>
+          </div> 
         </div>
       </div>
     </div>
-    <!-- end content -->
-
   </div>
 
+  <div class="container">
+    <div class="movie-loader"></div>
+    <div class="row movies">
+      <div class="col-md-12">
+        <div class="mt-5 text-center text-white">
+          <h1>Selamat datang</h1>
+          <p>Cari film kesukaan kamu disini!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="movieModalDetails" tabindex="-1" role="dialog" aria-labelledby="movieModalDetailsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Movie Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-detail-loader"></div>
+        <div class="modal-body modal-movie">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end Modal -->
 
 
 
 
 
-
-
+  <div class="mt-5"></div>
+  <div class="footer bg-transparent pt-3">
+    <p><a class="text-white" href="https://github.com/robbiabd">Robbi Abdul Rohman</a></p>
+  </div>
 
 
 
@@ -110,5 +120,6 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="../js/movie.js"></script>
 </body>
 </html>
