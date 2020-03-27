@@ -18,7 +18,7 @@ btnSearch.addEventListener('click', async function () {
 });
 
 function getMovies(keyword) {
-  return fetch('http://www.omdbapi.com/?apikey=f7a4022a&s=' + keyword)
+  return fetch('https://www.omdbapi.com/?apikey=f7a4022a&s=' + keyword)
   .finally(() => {
     const movieLoader = document.querySelector('.movie-loader');
     movieLoader.classList.toggle('loader');
@@ -66,7 +66,7 @@ document.addEventListener('click', async function (e) {
 });
 
 function getMoviesDetails(imdbId) {
-  return fetch('http://www.omdbapi.com/?apikey=f7a4022a&i=' + imdbId)
+  return fetch('https://www.omdbapi.com/?apikey=f7a4022a&i=' + imdbId)
   .finally(() => {
     const movieLoader = document.querySelector('.modal-detail-loader');
     movieLoader.classList.toggle('loader');
